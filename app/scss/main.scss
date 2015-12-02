@@ -1,0 +1,380 @@
+/* UI */
+
+@import '_ui.scss';
+
+/* SECTION */
+
+.logo {
+  width: 128px;
+  margin: auto;
+  display: block;
+  margin-top: 90px;
+}
+
+section {
+
+  &#home {
+    height: 100%;
+    header {
+      @include position(absolute, 0 0 null 0);
+
+      .logo {
+
+      }
+    }
+    .container{
+      height: 100%;
+      min-height: 100%;
+      white-space: nowrap;
+      position: relative;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      .centered {
+        @include position(relative);
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+
+        h1 {
+          line-height: 1em;
+        }
+
+        h5 {
+          margin: 20px 0;
+        }
+
+        .btn {
+          margin: 50px 0 0;
+        }
+      }
+    }
+  }
+  &#choose-wishes {
+    padding: 100px 0 70px;
+    .container {
+      header {
+        margin: 0 0 10px;
+
+        &.text-center {
+          h2 {
+            color: $gold;
+          }
+        }
+      }
+      .row {
+        &.text-center {
+          margin: 0 0 20px;
+
+          .col-md-6 {
+            width: 46%;
+            margin: 15px 2%;
+          }
+        }
+
+        .custom-container {
+          @include position(relative);
+
+          .info {
+            @include position(absolute, 0 null 0 100%);
+            width: 30%;
+            margin: auto;
+            height: 2.8em;
+
+            h5 {
+              text-shadow: none;
+              margin: 0;
+            }
+            h6 {
+              margin: 0;
+            }
+          }
+        }
+      }
+      footer {
+        margin-top: 10px;
+
+        h5 {
+          margin: 25px 0;
+        }
+
+      }
+    }
+    input {
+      &[type="radio"] {
+        & + label {
+          height: 110px;
+        }
+      }
+    }
+  }
+  &#pick-one-ornament {
+    padding: 20px 0 70px;
+    background-color: $gold;
+
+    .container {
+      header {
+        h2 {
+          color: $w;
+        }
+        h5 {
+
+        }
+      }
+
+      .row {
+        text-align: center;
+
+        .col-md-2 {
+          margin: 25px -2px;
+          display: inline-block;
+          float: none;
+
+          input {
+            &[type="radio"] {
+              display: none;
+
+              &:checked {
+                & + label {
+                  padding: 21px 35px;
+
+                  .opis {
+                    color: $blue;
+                  }
+                }
+              }
+
+              & + label {
+                @include border-color($blue);
+                height: 190px;
+                padding: 23px 37px;
+                margin: 0;
+
+                &:hover {
+                  .opis {
+                    color: $blue;
+                  }
+                }
+
+                .opis {
+                  @include position(absolute, 100% 0 null 0);
+                  text-align: center;
+                  width: 100%;
+                  color: $w;
+                  padding: 5px 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &#choose-wrapping-paper {
+    padding: 50px 0 100px;
+
+    .container {
+      header {
+        padding: 0 0 5px;
+
+        &.text-center {
+          h2 {
+            color: $gold;
+          }
+        }
+      }
+      .validation {
+        margin: 0 0 15px;
+      }
+    }
+  }
+  &#define-receipents {
+    padding: 50px 0 0;
+
+    .container {
+      header {
+        padding: 0 0 50px;
+
+        &.text-center {
+          h2 {
+            color: $gold;
+          }
+        }
+      }
+      .row {
+        .col-md-8 {
+          .form-group {
+            @include transition(all 1s ease);
+            height: 60px;
+            margin: 14px 0;
+            padding: 0 5% 0 0;
+            width: 105%;
+            line-height:60px;
+            list-style:none;
+            /*box-sizing:border-box;*/
+            overflow: hidden;
+
+
+            &.ng-move,
+            &.ng-enter,
+            &.ng-leave {
+              @include transition(all 500ms ease);
+            }
+
+            &.ng-leave.ng-leave-active,
+            &.ng-move,
+            &.ng-enter {
+              opacity:0;
+              max-height:0;
+            }
+
+            &.ng-leave,
+            &.ng-move.ng-move-active,
+            &.ng-enter.ng-enter-active {
+              opacity:1;
+              max-height:60px;
+            }
+
+            &.ng-leave-stagger {
+              -webkit-transition-delay: 0.2s;
+              transition-delay: 0.2s;
+
+              -webkit-transition-duration: 0s;
+              transition-duration: 0s;
+            }
+
+            &.ng-enter-stagger {
+              -webkit-transition-delay: 0.2s;
+              transition-delay: 0.2s;
+              -webkit-transition-duration: 0s;
+              transition-duration: 0s;
+            }
+
+            .btn {
+              &.remove-btn {
+                @include position(absolute, 0 0 0 null);
+                @include transition(opacity 200ms ease-in-out);
+                @include box-shadow(none);
+                height: 40px;
+                width: 40px;
+                margin: 0;
+                background: none;
+                opacity: 0;
+
+                img {
+
+                }
+              }
+            }
+
+            &:hover {
+              .btn {
+                &.remove-btn {
+                  opacity: 0.8;
+
+                }
+              }
+            }
+
+            .col-md-6 {
+              input {
+                @include border-color($gold);
+                @include border-width(2px);
+                font-weight: 700;
+                padding: 0 20px;
+              }
+            }
+          }
+
+          .col-md-12 {
+            .btn-dotted {
+              @include border-style(dashed);
+              @include border-color($gold);
+              @include border-width(2px);
+              @include border-radius(8px);
+              height: 55px;
+              line-height: 50px;
+              display: block;
+              margin-top: 30px;
+              color: $blue;
+              font-weight: 700;
+              padding: 1px;
+              background: none;
+              width:100%;
+
+              &:hover {
+                @include border-color($blue);
+                @include border-width(3px);
+                @include border-style(solid);
+                padding: 0px;
+                text-decoration: none;
+              }
+
+              img {
+                margin-right: 15px;
+              }
+            }
+
+            &.preview {
+              @include border-style(solid none none none);
+              @include border-color($gold);
+              margin: 70px 0 0;
+              padding: 55px 0;
+
+              .btn {
+                @include border-radius(20px);
+                height: 40px;
+                line-height: 40px;
+                font-size: em(16, $font-size);
+                font-weight: 700;
+                text-shadow: none;
+              }
+              h5 {
+                margin: 30px 0 0;
+                text-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &#footer {
+    background-color: #162C53;
+    .container {
+      h3 {
+        color: $w;
+        margin: 70px 0 0;
+        padding: 0;
+
+      }
+      .btn {
+        background-color: $green;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 70px;
+        margin: 30px 0 70px;
+      }
+    }
+    footer {
+      color: #8a91a2;
+      background-color: #152343;
+      height: 27px;
+      line-height: 27px;
+      .container {
+        font-weight: 700;
+        font-size: em(10, $font-size);
+
+      }
+    }
+  }
+}
+
+/* RESPONSIVE */
+
+@import '_responsive.scss';

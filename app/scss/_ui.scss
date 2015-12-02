@@ -1,0 +1,419 @@
+/* BOURBON */
+
+@import 'bourbon/_bourbon.scss';
+
+/* VARIABLES */
+
+/* colors */
+$w: #fff;
+$b: #000;
+$blue: #102C52;
+$gold: #D1AC50;
+$goldLight: #F4BB3B;
+$red: #F05753;
+$green: #79BA66;
+
+/* fonts */
+$font: 'Titillium Web', sans-serif;
+$font-size: 14px;
+$text-shadow: 3px 3px rgba(0, 0, 0, 0.15);
+
+
+/* GLOBAL */
+
+/* MIXINS */
+
+@mixin heading($fontSize, $fontWeight) {
+  font-family: $font;
+  font-size: em($fontSize, $font-size);
+  font-weight: $fontWeight;
+}
+
+@mixin border-radius($radii) {
+  border-top-left-radius: $radii;
+  border-top-right-radius: $radii;
+  border-bottom-left-radius: $radii;
+  border-bottom-right-radius: $radii;
+}
+
+@mixin pos($top, $left) {
+  top: $top;
+  right: auto;
+  bottom: auto;
+  left: $left;
+}
+
+@mixin box-shadow($parameters) {
+  -webkit-box-shadow: $parameters;
+  box-shadow: $parameters;
+}
+
+/* ANIMATIONS */
+
+@keyframes star-01 {
+  0% {
+    @include transform(translate3d(0, 0, 0) rotate(0deg));
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+  100% {
+    @include transform(translate3d(1000%, 1000%, 0) rotate(720deg));
+    opacity: 0;
+  }
+}
+
+@keyframes star-02 {
+  0% {
+    @include transform(scale(0) rotate(0deg));
+  }
+  40% {
+    @include transform(scale(1) rotate(90deg));
+  }
+  60% {
+    @include transform(scale(1) rotate(90deg));
+  }
+  100% {
+    @include transform(scale(0) rotate(180deg));
+  }
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: $w;
+
+}
+body {
+  min-height: 100%;
+  font-family: $font;
+  color: $blue;
+  font-size: $font-size;
+  background-color: $w;
+}
+
+article, header, nav, nav ul, nav li, footer {
+  display: block;
+}
+
+a[ng-click]{
+  cursor: pointer;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover
+{
+  outline:0px !important;
+  -webkit-appearance:none;
+}
+
+::-webkit-input-placeholder {
+  color: $blue;
+}
+:-moz-placeholder {
+  color: $blue;
+  opacity:  1;
+}
+::-moz-placeholder {
+  color: $blue;
+  opacity:  1;
+}
+:-ms-input-placeholder {
+  color: $blue;
+}
+
+h1 {
+  @include heading(60, 300);
+  text-shadow: $text-shadow;
+}
+
+h2 {
+  @include heading(40, 700);
+  text-shadow: $text-shadow;
+}
+
+h3 {
+  @include heading(30, 700);
+}
+
+h4 {
+
+}
+
+h5 {
+  @include heading(20, 700);
+  text-shadow: $text-shadow;
+}
+
+h6 {
+  @include heading(12, 700);
+}
+
+a {
+  &.btn {
+    @include border-radius(8px);
+    background-color: $gold;
+    font-size: em(24, $font-size);
+    text-transform: uppercase;
+    color: $blue;
+    line-height: 60px;
+    padding: 0 45px;
+    letter-spacing: 0.2em;
+    text-shadow: $text-shadow;
+
+    &:hover {
+      background-color: $goldLight;
+    }
+  }
+}
+
+input {
+  & + label {
+    cursor: pointer;
+  }
+
+  &[type="radio"] {
+    display: none;
+
+    &:checked {
+      & + label {
+        @include border-style(solid);
+        @include border-width(4px);
+        @include border-color($blue);
+        padding: 25px 35px;
+      }
+    }
+
+    & + label {
+      @include border-style(dashed);
+      @include border-radius(8px);
+      @include border-width(2px);
+      @include border-color($gold);
+      display: block;
+      width: 100%;
+      padding: 27px 37px;
+    }
+  }
+  &[type="text"] {
+    @include border-radius(8px);
+    @include border-style(solid);
+    @include border-width(4px);
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+  }
+}
+
+textarea {
+  @include border-style(solid);
+  @include border-radius(8px);
+  @include border-width(2px);
+  @include border-color($gold);
+  width: 100%;
+  height: 110px;
+  padding: 20px;
+  color: $blue;
+  font-weight: 700;
+
+  &.active {
+    @include border-color($blue);
+    @include border-width(3px);
+    padding: 19px;
+  }
+}
+
+.plus {
+  width: 15px;
+  height: 15px;
+  margin-top: -4px;
+}
+
+.form-group {
+  @include position(relative);
+
+  .control-label {
+    @include position(absolute, 0 98% 0 null);
+    width: 40%;
+    text-align: left;
+    z-index: 0;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    background-color: $red;
+    color: $w;
+    display: none;
+  }
+
+  input {
+    @include position(relative);
+    @include border-width(2px);
+    @include border-color($gold);
+    font-weight: 700;
+    padding: 0 20px;
+    z-index: 1;
+  }
+
+  &.has-error {
+    .control-label {
+      display: block;
+    }
+    input {
+      @include border-color($red);
+      color: $red;
+
+      &::-webkit-input-placeholder {
+        color: $red;
+      }
+      &:-moz-placeholder {
+        color: $red;
+        opacity:  1;
+      }
+      &::-moz-placeholder {
+        color: $red;
+        opacity:  1;
+      }
+      &:-ms-input-placeholder {
+        color: $red;
+      }
+    }
+  }
+}
+
+.validation {
+  display: block;
+  height: 80px;
+  text-align: center;
+  padding: 20px 0 0;
+
+  .error {
+    display: none;
+    width: auto;
+    background-color: $red;
+    color: $w;
+    height: 42px;
+    line-height: 42px;
+    font-weight: 700;
+    padding: 0 20px;
+  }
+
+  &.has-error {
+    .error {
+      display: inline-block;
+    }
+  }
+}
+
+.stars {
+  @include position(absolute, 0 0 0 0);
+
+  .star {
+    @include position(absolute);
+
+    &.star-01 {
+      @include animation-name(star-01);
+      @include animation-duration(12s);
+      @include animation-timing-function(linear);
+      @include animation-iteration-count(infinite);
+      @include transform(rotate(0deg));
+      width: 51px;
+      height: 57px;
+    }
+
+    &.star-02 {
+      @include animation-name(star-02);
+      @include animation-duration(4s);
+      @include animation-timing-function(ease);
+      @include animation-iteration-count(infinite);
+      @include transform(scale(0) rotate(0deg));
+      width: 24px;
+      height: 24px;
+
+      &#star-02-01 {
+        @include pos(10%, 10%);
+        @include animation-delay(1s);
+      }
+
+      &#star-02-02 {
+        @include pos(8%, 75%);
+        @include animation-delay(3s);
+      }
+
+      &#star-02-03 {
+        @include pos(80%, 20%);
+        @include animation-delay(2s);
+      }
+
+      &#star-02-04 {
+        @include pos(75%, 85%);
+        @include animation-delay(5s);
+      }
+
+      &#star-02-05 {
+        @include pos(90%, 70%);
+      }
+    }
+
+    &.star-03 {
+      @include animation-name(star-01);
+      @include animation-duration(12s);
+      @include animation-timing-function(linear);
+      @include animation-iteration-count(infinite);
+      @include transform(rotate(0deg));
+      width: 58px;
+      height: 58px;
+
+      &#star-03-01 {
+        @include pos(41%, 5%);
+        @include animation-delay(1s);
+      }
+    }
+
+    &.star-04 {
+      @include animation-name(star-01);
+      @include animation-duration(12s);
+      @include animation-timing-function(linear);
+      @include animation-iteration-count(infinite);
+      @include transform(rotate(0deg));
+      width: 52px;
+      height: 59px;
+
+      &#star-04-01 {
+        @include pos(40%, 15%);
+        @include animation-delay(5s);
+      }
+    }
+
+    &.star-05 {
+      @include animation-name(star-01);
+      @include animation-duration(12s);
+      @include animation-timing-function(linear);
+      @include animation-iteration-count(infinite);
+      @include transform(rotate(0deg));
+      width: 52px;
+      height: 59px;
+
+      &#star-05-01 {
+        @include pos(30%, 40%);
+        @include animation-delay(2s);
+      }
+    }
+  }
+}
+
+
+
+
