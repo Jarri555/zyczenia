@@ -20,17 +20,24 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+      .when('/en', {
+        templateUrl: 'views/english.html'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/pl', {
+        templateUrl: 'views/polski.html'
+      })
+      .when('/zyczenia/:token', {
+        templateUrl: 'views/zyczenia.html',
+        controller: 'ZyczeniaCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/en'
       });
+  })
+  .run(function ($rootScope, $timeout, $window) {
+    $rootScope.$on('$routeChangeSuccess', function () {
+      $timeout(function () {
+        $window.scrollTo(0,0);
+      }, 500);
+    });
   });

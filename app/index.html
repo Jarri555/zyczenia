@@ -11,6 +11,7 @@
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -24,325 +25,9 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<section id="home">
-  <div class="stars">
-    <img src="images/gwiazka-01.svg" alt="+" class="star star-01" id="star-01-01">
+<div id="wrapper" ng-view="">
 
-    <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-01">
-    <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-02">
-    <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-03">
-    <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-04">
-    <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-05">
-
-    <img src="images/gwiazka-03.svg" alt="+" class="star star-03" id="star-03-01">
-
-    <img src="images/gwiazka-04.svg" alt="+" class="star star-04" id="star-04-01">
-
-    <img src="images/gwiazka-05.svg" alt="+" class="star star-05" id="star-05-01">
-  </div>
-
-
-  <div class="container text-center">
-    <header>
-      <img src="images/wyborowa-logo.svg" alt="Wyborowa" class="logo">
-
-    </header>
-    <div class="centered">
-      <h1>Send<br>
-        Christmas card<br>
-        to Your clients</h1>
-      <h5>Just follow few easy steps</h5>
-      <a href="#" class="btn" ng-click="letsSendSomeCards($event)">let’s send some cards!</a>
-    </div>
-  </div>
-</section>
-
-<section id="choose-wishes">
-  <div class="container">
-    <header class="text-center">
-      <h2>Choose wishes</h2>
-      <h5>YOU CAN PICK ONE OF OUR WISHES OR WRITE YOUR OWN</h5>
-    </header>
-    <div class="validation" ng-class="errors.wishes ? 'has-error' : ''">
-      <div class="error">
-        Your name is inYou have to select one of the ornaments
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col-md-6">
-        <input type="radio" id="c11" name="q1" ng-model="questions.q1.radio" value="1"/>
-        <label for="c11">May this holiday season sparkle and shine, may all of your wishes and dreams come true, and may
-          you feel this happiness all year round.
-        </label>
-      </div>
-      <div class="col-md-6">
-        <input type="radio" id="c12" name="q1" ng-model="questions.q1.radio" value="2"/>
-        <label for="c12">During this time of faith and family, may the true meaning of Christmas fill you with joy.
-          Wishing you a Merry Christmas and a blessed New Year.
-        </label>
-      </div>
-
-      <div class="col-md-6">
-        <input type="radio" id="c13" name="q1" ng-model="questions.q1.radio" value="3"/>
-        <label for="c13">May the message of Christmas fill your life with joy and peace. Best wishes to you and your
-          family during this holiday season.
-        </label>
-      </div>
-
-      <div class="col-md-6">
-        <input type="radio" id="c14" name="q1" ng-model="questions.q1.radio" value="4"/>
-        <label for="c14">This time of year brings festivities and family fun. It is a time for reminiscing and looking
-          forward. Wishing you wonderful memories during this joyous season.
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3 custom-container">
-        <textarea name="customWishes" id="customWishes" placeholder="Write your custom wishes" cols="30"
-                  rows="5" ng-model="questions.q1.custom.text"
-                  ng-class="questions.q1.custom.active == true ? 'active' : ''"
-                  ng-click="questions.q1.custom.active = true; questions.q1.radio = ''"
-                  ng-touch="questions.q1.custom.active = true; questions.q1.radio = ''"></textarea>
-
-        <div class="info">
-          <h5>{{160 - questions.q1.custom.characters}}</h5>
-          <h6>caracters left</h6>
-        </div>
-      </div>
-    </div>
-    <footer class="text-center col-md-6 col-md-offset-3">
-      <h5>Sign the card you’re sending</h5>
-
-      <div class="form-group" ng-class="errors.fullName ? 'has-error' : ''">
-        <label class="control-label" for="full-name">Your name is incorrect</label>
-        <input type="text" placeholder="Full name" id="full-name" ng-model="fullName">
-      </div>
-    </footer>
-  </div>
-</section>
-<section id="pick-one-ornament">
-  <div class="container">
-    <header class="text-center">
-      <h2>Pick one ornament</h2>
-      <h5>THIS ORNAMENT WILL BE A GIFT FOR YOUR CLIENT</h5>
-    </header>
-    <div class="validation" ng-class="errors.ornament ? 'has-error' : ''">
-      <div class="error">
-        Your name is inYou have to select one of the ornaments
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <input type="radio" id="c201" name="q2" ng-model="questions.q2.radio" value="1"/>
-        <label for="c201">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c202" name="q2" ng-model="questions.q2.radio" value="2"/>
-        <label for="c202">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c203" name="q2" ng-model="questions.q2.radio" value="3"/>
-        <label for="c203">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c204" name="q2" ng-model="questions.q2.radio" value="4"/>
-        <label for="c204">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c205" name="q2" ng-model="questions.q2.radio" value="5"/>
-        <label for="c205">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c206" name="q2" ng-model="questions.q2.radio" value="6"/>
-        <label for="c206">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c207" name="q2" ng-model="questions.q2.radio" value="7"/>
-        <label for="c207">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c208" name="q2" ng-model="questions.q2.radio" value="8"/>
-        <label for="c208">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c209" name="q2" ng-model="questions.q2.radio" value="9"/>
-        <label for="c209">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c210" name="q2" ng-model="questions.q2.radio" value="10"/>
-        <label for="c210">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c211" name="q2" ng-model="questions.q2.radio" value="11"/>
-        <label for="c211">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="choose-wrapping-paper">
-  <div class="container">
-    <header class="text-center">
-      <h2>Choose wrapping paper</h2>
-      <h5>WE WILL USE IT TO WRAP YOUR ORNAMENT</h5>
-    </header>
-    <div class="validation" ng-class="errors.paper ? 'has-error' : ''">
-      <div class="error">
-        Your name is inYou have to select one of the ornaments
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="col-md-4">
-          <input type="radio" id="c31" name="q3" ng-model="questions.q3.radio" value="1"/>
-          <label for="c31">
-            <img src="images/paper-01.svg" alt="Papier">
-          </label>
-        </div>
-        <div class="col-md-4">
-          <input type="radio" id="c32" name="q3" ng-model="questions.q3.radio" value="2"/>
-          <label for="c32">
-            <img src="images/paper-02.svg" alt="Papier">
-          </label>
-        </div>
-        <div class="col-md-4">
-          <input type="radio" id="c33" name="q3" ng-model="questions.q3.radio" value="3"/>
-          <label for="c33">
-            <img src="images/paper-03.svg" alt="Papier">
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="define-receipents">
-  <div class="container">
-    <header class="text-center">
-      <h2>Define receipents</h2>
-      <h5>SIMPLY WRITE FULL NAME AND EMAIL ADRESS</h5>
-    </header>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-
-        <div class="form-group animate-repeat" ng-repeat="receipent in receipents">
-          <button class="btn remove-btn" ng-click="removeAnotherPerson($index)" ng-show="receipents.length > 1"><img src="images/plus.svg" alt="x"></button>
-          <div class="col-md-6">
-            <input type="text" id="receipent-full-name-{{receipent.id}}" name="receipent-full-name-{{receipent.id}}" placeholder="Full name" ng-model="receipent.name">
-          </div>
-          <div class="col-md-6 person">
-            <input type="text" id="receipent-email-{{receipent.id}}" name="receipent-email-{{receipent.id}}" placeholder="Email" ng-model="receipent.email">
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <button class="btn-dotted text-center" ng-click="addAnotherPerson()"><img src="images/plus.svg" alt="+" class="plus">Add another person</button>
-        </div>
-        <div class="col-md-12 preview text-center">
-          <a href="#" class="btn text-center">preview card</a>
-          <h5>You can preview your card before sending it.</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="footer">
-  <div class="container text-center">
-    <h3>You will be sending {{receipents.length}} {{cards}}</h3>
-    <a href="#" class="btn" ng-click="sendCards($event)">send cards</a>
-  </div>
-  <footer class="text-center">
-    <div class="container">
-      Wyborowa Pernod Ricard 2015
-    </div>
-  </footer>
-</section>
-<!--
-
-<div class="container">
-  <div ng-view=""></div>
 </div>
-
-<div class="footer">
-  <div class="container">
-    <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-  </div>
-</div>-->
-
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -370,13 +55,22 @@
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <script src="bower_components/smoothscroll/SmoothScroll.js"></script>
+<script src="bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js"></script>
+<script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
+<script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
+<script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js"></script>
+
+
+
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/zyczenia.js"></script>
+<script src="scripts/services/wish.js"></script>
 <!-- endbuild -->
 </body>
 </html>

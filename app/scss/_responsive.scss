@@ -1,3 +1,377 @@
-@media all and (max-width: 768px) and (min-width: 321px) {}
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
 
-@media all and (max-width: 320px) {}
+  h1 {
+    @include heading(40, 300);
+    text-shadow: $text-shadow;
+  }
+
+  h2 {
+    @include heading(30, 700);
+    text-shadow: $text-shadow;
+  }
+
+  h3 {
+    @include heading(20, 700);
+  }
+
+  h4 {
+
+  }
+
+  h5 {
+    @include heading(14, 700);
+    text-shadow: $text-shadow;
+  }
+
+  h6 {
+    @include heading(10, 700);
+  }
+
+  a {
+    &.btn {
+      @include border-radius(8px);
+      background-color: $gold;
+      font-size: em(14, $font-size);
+      text-transform: uppercase;
+      color: $blue;
+      line-height: 40px;
+      padding: 0 15px;
+      letter-spacing: 0.2em;
+      text-shadow: $text-shadow;
+
+      &:hover {
+        background-color: $goldLight;
+      }
+    }
+  }
+
+  .logo {
+    width: 80px;
+    margin-top: 20px;
+  }
+
+  section {
+    &#home {
+      overflow: hidden;
+    }
+
+    &#choose-wishes {
+      .container {
+        .row {
+          &.text-center {
+            .col-md-6 {
+              width: 100%;
+              font-size: em(11, $font-size);
+            }
+          }
+          .custom-container {
+            .info {
+              @include position(relative, 0 0 0 0);
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    &#pick-one-ornament {
+      .container {
+        .row {
+          .col-md-2 {
+            width: 50%;
+
+            label {
+              //padding: 23px 37px;
+              padding: 21px 15px !important;
+
+              img {
+                max-height: 130px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &#choose-wrapping-paper {
+      .col-md-4 {
+        margin-bottom: 40px;
+      }
+    }
+
+    &#define-recipients {
+      .container {
+        .row {
+          .col-md-8 {
+            .form-group {
+              @include transition(all 1s ease);
+              height: auto;
+              margin: 0;
+              padding: 0 5% 0 0;
+              width: 100%;
+              line-height: 60px;
+              list-style: none;
+              /*box-sizing:border-box;*/
+              overflow: hidden;
+
+              .btn {
+                &.remove-btn {
+                  @include position(absolute, 0 0 0 null);
+                  @include transition(opacity 200ms ease-in-out);
+                  @include box-shadow(none);
+                  height: 40px;
+                  width: 10px;
+                  margin: 10px 0;
+                  background: none;
+                  opacity: 0;
+                  font-weight: 700;
+                  color: $w;
+                  opacity: 0.8;
+                  font-size: 0;
+
+                  img {
+                    width: 12px;
+                    height: 12px;
+                    margin-right: 12px;
+                    margin-top: 30px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &#footer {
+      .container {
+        div {
+          .btn {
+            width: 80%;
+            font-size: em(18, $font-size);
+          }
+        }
+      }
+    }
+  }
+
+  .form-group {
+    .control-label {
+      position: relative;
+      top: 0;
+      right: 0%;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 0;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 20px;
+      background-color: #F05753;
+      color: #fff;
+    }
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+
+  h1 {
+    @include heading(60, 300);
+    text-shadow: $text-shadow;
+  }
+
+  h2 {
+    @include heading(40, 700);
+    text-shadow: $text-shadow;
+  }
+
+  h3 {
+    @include heading(30, 700);
+  }
+
+  h4 {
+
+  }
+
+  h5 {
+    @include heading(20, 700);
+    text-shadow: $text-shadow;
+  }
+
+  h6 {
+    @include heading(12, 700);
+  }
+
+  a {
+    &.btn {
+      font-size: em(24, $font-size);
+      padding: 0 45px;
+      line-height: 60px;
+    }
+  }
+
+  .logo {
+    width: 128px;
+    margin-top: 90px;
+  }
+
+  section {
+    &#home {
+      overflow: visible;
+    }
+
+    &#choose-wishes {
+      .container {
+        .row {
+          &.text-center {
+            .col-md-6 {
+              width: 46%;
+              font-size: em(14, $font-size);
+            }
+          }
+          .custom-container {
+            .info {
+              @include position(absolute, 0 auto 0 100%);
+              text-align: left;
+              position: absolute;
+              width: 30%;
+              margin: auto;
+              height: 2.8em;
+            }
+          }
+        }
+      }
+    }
+
+    &#pick-one-ornament {
+      .container {
+        .row {
+          .col-md-2 {
+            width: 16.66666667%;
+
+            label {
+              padding: 25px 15px !important;
+
+              img {
+                max-height: 180px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &#choose-wrapping-paper {
+      .col-md-4 {
+        margin-bottom: 0px;
+      }
+    }
+
+    &#define-recipients {
+      .container {
+        .row {
+          .col-md-8 {
+
+            .form-group {
+              @include transition(all 1s ease);
+              height: 60px;
+              margin: 0;
+              padding: 0 11% 0 0;
+              width: 111%;
+              line-height: 60px;
+              list-style: none;
+              /*box-sizing:border-box;*/
+              overflow: hidden;
+
+              .btn {
+                &.remove-btn {
+                  @include position(absolute, 0 0 0 null);
+                  @include transition(opacity 200ms ease-in-out);
+                  @include box-shadow(none);
+                  height: 40px;
+                  width: 90px;
+                  margin: 10px 0;
+                  background: none;
+                  opacity: 0;
+                  font-weight: 700;
+                  font-size: em(14, $font-size);
+                  color: $red;
+
+                  img {
+                    width: 12px;
+                    height: 12px;
+                    margin-right: 12px;
+                    margin-top: -2px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &#footer {
+      .container {
+        div {
+          .btn {
+            width: auto;
+            font-size: em(24, $font-size);
+          }
+        }
+      }
+    }
+  }
+
+  .form-group {
+    .control-label {
+      position: absolute;
+      top: 0;
+      right: 98%;
+      left: auto;
+      bottom: 0;
+      width: 40%;
+      text-align: left;
+      z-index: 0;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 20px;
+      background-color: #F05753;
+      color: #fff;
+    }
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  section {
+    &#pick-one-ornament {
+      .container {
+        .row {
+          .col-md-2 {
+            width: 16.66666667%;
+
+            label {
+              padding: 23px 37px !important;
+
+              img {
+                max-height: 180px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

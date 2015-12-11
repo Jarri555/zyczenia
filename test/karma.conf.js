@@ -33,6 +33,8 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-scroll/angular-scroll.js',
       'bower_components/smoothscroll/SmoothScroll.js',
+      'bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
+      'bower_components/gsap/src/uncompressed/TweenMax.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
