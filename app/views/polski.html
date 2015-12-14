@@ -1,6 +1,6 @@
 <section id="home">
   <div class="stars">
-    <img src="images/gwiazka-01.svg" alt="+" class="star star-01" id="star-01-01">
+    <!--<img src="images/gwiazka-01.svg" alt="+" class="star star-01" id="star-01-01">-->
 
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-01">
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-02">
@@ -8,11 +8,11 @@
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-04">
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-05">
 
-    <img src="images/gwiazka-03.svg" alt="+" class="star star-03" id="star-03-01">
+    <!--<img src="images/gwiazka-03.svg" alt="+" class="star star-03" id="star-03-01">
 
     <img src="images/gwiazka-04.svg" alt="+" class="star star-04" id="star-04-01">
 
-    <img src="images/gwiazka-05.svg" alt="+" class="star star-05" id="star-05-01">
+    <img src="images/gwiazka-05.svg" alt="+" class="star star-05" id="star-05-01">-->
   </div>
 
 
@@ -298,7 +298,7 @@
           </button>
         </div>
         <div class="col-md-12 preview text-center">
-          <a href="#/zyczenia/preview" class="btn text-center">preview card</a>
+          <button class="btn text-center" ng-click="previewCard($event)">preview card</button>
           <h5>You can preview your card before sending it.</h5>
         </div>
       </div>
@@ -323,8 +323,12 @@
   </div>
 
   <footer class="text-center">
-    <div class="container">
+
+    <div class="col-md-6">
       Wyborowa Pernod Ricard 2015
+    </div>
+    <div class="col-md-6">
+      Made by Plej <img src="images/plej.svg" alt="Plej">
     </div>
   </footer>
 </section>

@@ -8,7 +8,9 @@
  * Factory in the zyczeniaApp.
  */
 angular.module('zyczeniaApp')
-  .factory('wish', function ($q, $http) {
+  .factory('wish', function ($q, $http, $cookies) {
+
+    var wishes = {};
 
     return {
       getWish: function (token) {
@@ -21,6 +23,16 @@ angular.module('zyczeniaApp')
         });
 
         return defer.promise;
+      },
+
+      setWishes: function (val) {
+        $cookies.putObject('wishPrev', val);
+      },
+
+      getWishes: function() {
+        var val = $cookies.getObject('wishPrev')
+        $cookies.remove('wishPrev');
+        return val;
       }
     };
   });

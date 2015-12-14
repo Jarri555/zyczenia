@@ -30,9 +30,14 @@ angular
         templateUrl: 'views/zyczenia.html',
         controller: 'ZyczeniaCtrl'
       })
+      .when('/hang/:token', {
+        templateUrl: 'views/hang.html',
+        controller: 'HangCtrl'
+      })
       .otherwise({
         redirectTo: '/en'
-      });
+      })
+    ;
   })
   .run(function ($rootScope, $timeout, $window) {
     $rootScope.$on('$routeChangeSuccess', function () {

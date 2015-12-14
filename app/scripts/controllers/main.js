@@ -8,7 +8,8 @@
  * Controller of the zyczeniaApp
  */
 angular.module('zyczeniaApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $document, $http, $timeout, $location) {
+  .controller('MainCtrl', function ($rootScope, $scope, $document, $http, $timeout, $location, $window, bombki, wish) {
+    $scope.bombki = bombki.getBombki();
 
     $scope.resetForm = function () {
       $scope.sendStatus = 'none';
@@ -194,8 +195,7 @@ angular.module('zyczeniaApp')
       $scope.recipients.splice(index, 1);
     };
 
-    $scope.sendCards = function (e) {
-
+    $scope.validateForm = function () {
       if (!$scope.validation($scope.recipients[0].fullName) || !$scope.validation($scope.recipients[0].email)) {
         $scope.errors.recipients = true;
         $document.scrollToElement($scope.elements.defineRecipients, $scope.scrollCfg.offset.page, $scope.scrollCfg.duration);
@@ -244,8 +244,6 @@ angular.module('zyczeniaApp')
             $scope.recipients[i].emailError = true;
           }
         }
-
-
       }
 
       if (!$scope.validation($scope.questions.q3.radio)) {
@@ -270,8 +268,40 @@ angular.module('zyczeniaApp')
         }
       }
 
+      if($scope.errors.recipients || $scope.errors.paper || $scope.errors.ornament || $scope.errors.fullName || $scope.errors.wishes) {
+        return false;
+      }
 
-      if (!$scope.errors.recipients && !$scope.errors.paper && !$scope.errors.ornament && !$scope.errors.fullName && !$scope.errors.wishes) {
+      return true;
+    };
+
+    $scope.previewCard = function (e) {
+      if ($scope.validateForm()) {
+
+        var q1 = isEmpty($scope.questions.q1.radio) && $scope.questions.q1.custom.active ? null : $scope.questions.q1.radio;
+        var q1custom = isEmpty($scope.questions.q1.custom.text) && !$scope.questions.q1.custom.active ? null : $scope.questions.q1.custom.text;
+        var lang = $location.path() == '/en' ? 'en' : 'pl';
+
+        wish.setWishes({
+          fullName: $scope.sender.fullName.trim(),
+          q1: q1,
+          q1custom: q1custom,
+          q2: $scope.questions.q2.radio,
+          q3: $scope.questions.q3.radio,
+          recipients: $scope.recipients,
+          language: lang
+        });
+
+        $window.open('#/zyczenia/preview/');
+        //$location.path('/zyczenia/asdas/dasda/dasda/dasd/dsadas/dasda');
+      }
+
+      e.preventDefault();
+    };
+
+    $scope.sendCards = function (e) {
+
+      if ($scope.validateForm()) {
 
         var q1 = isEmpty($scope.questions.q1.radio) && $scope.questions.q1.custom.active ? null : $scope.questions.q1.radio;
         var q1custom = isEmpty($scope.questions.q1.custom.text) && !$scope.questions.q1.custom.active ? null : $scope.questions.q1.custom.text;
@@ -308,4 +338,6 @@ angular.module('zyczeniaApp')
       $document.scrollToElement($scope.elements.chooseWishes, $scope.scrollCfg.offset.page, $scope.scrollCfg.duration);
       e.preventDefault();
     };
+
+
   });

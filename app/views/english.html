@@ -108,123 +108,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
-        <input type="radio" id="c201" name="q2" ng-model="questions.q2.radio" value="1"/>
-        <label for="c201">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
+      <div class="col-md-2" ng-repeat="bombka in bombki">
+        <input type="radio" id="c2-{{bombka.id}}" name="q2" ng-model="questions.q2.radio" value="{{bombka.id}}"/>
+        <label for="c2-{{bombka.id}}">
+          <img src="images/bombki/{{bombka.image}}" alt="{{bombka.name}}">
 
           <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c202" name="q2" ng-model="questions.q2.radio" value="2"/>
-        <label for="c202">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c203" name="q2" ng-model="questions.q2.radio" value="3"/>
-        <label for="c203">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c204" name="q2" ng-model="questions.q2.radio" value="4"/>
-        <label for="c204">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c205" name="q2" ng-model="questions.q2.radio" value="5"/>
-        <label for="c205">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c206" name="q2" ng-model="questions.q2.radio" value="6"/>
-        <label for="c206">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c207" name="q2" ng-model="questions.q2.radio" value="7"/>
-        <label for="c207">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c208" name="q2" ng-model="questions.q2.radio" value="8"/>
-        <label for="c208">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c209" name="q2" ng-model="questions.q2.radio" value="9"/>
-        <label for="c209">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c210" name="q2" ng-model="questions.q2.radio" value="10"/>
-        <label for="c210">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
-          </div>
-        </label>
-      </div>
-
-      <div class="col-md-2">
-        <input type="radio" id="c211" name="q2" ng-model="questions.q2.radio" value="11"/>
-        <label for="c211">
-          <img src="images/bombka-wyborowa.svg" alt="Wyborowa">
-
-          <div class="opis">
-            Wyborowa
+            {{bombka.name}}
           </div>
         </label>
       </div>
@@ -298,7 +188,7 @@
           </button>
         </div>
         <div class="col-md-12 preview text-center">
-          <a href="#/zyczenia/preview" target="_blank" class="btn text-center">preview card</a>
+          <button class="btn text-center" ng-click="previewCard($event)">preview card</button>
           <h5>You can preview your card before sending it.</h5>
         </div>
       </div>

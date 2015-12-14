@@ -8,16 +8,73 @@
  * Controller of the zyczeniaApp
  */
 angular.module('zyczeniaApp')
-  .controller('ZyczeniaCtrl', function ($scope, $routeParams, $http, $location) {
+  .controller('ZyczeniaCtrl', function ($scope, $routeParams, $http, $location, $timeout, bombki, wish) {
     var token = $routeParams.token;
-    console.log(token);
+    $scope.wishCookie = wish.getWishes();
+
+    console.log($scope.wishCookie);
+
+    if(typeof $scope.wishCookie === 'undefined') {
+      $location.path('/');
+    }
 
     if(token == 'preview') {
+
+      $scope.language = '';
+
+      var q1 = $scope.wishCookie.q1;
+
+      if($scope.wishCookie.q1 === null) {
+        q1 = $scope.wishCookie.q1custom;
+      } else {
+        q1 = $scope.wishCookie.q1;
+
+        if($scope.wishCookie.q1 == 1) {
+          if($scope.wishCookie.lang == 'en') {
+            q1 = 'May this holiday season sparkle and shine, may all of your wishes and dreams come true, and may you feel this happiness all year round.';
+          } else {
+            q1 = 'May this holiday season sparkle and shine, may all of your wishes and dreams come true, and may you feel this happiness all year round.';
+          }
+
+        } else if ($scope.wishCookie.q1 == 2) {
+          if($scope.wishCookie.lang == 'en') {
+            q1 = 'During this time of faith and family, may the true meaning of Christmas fill you with joy. Wishing you a Merry Christmas and a blessed New Year.';
+          } else {
+            q1 = 'During this time of faith and family, may the true meaning of Christmas fill you with joy. Wishing you a Merry Christmas and a blessed New Year.';
+          }
+        } else if ($scope.wishCookie.q1 == 3) {
+          if($scope.wishCookie.lang == 'en') {
+            q1 = 'May the message of Christmas fill your life with joy and peace. Best wishes to you and your family during this holiday season.';
+          } else {
+            q1 = 'May the message of Christmas fill your life with joy and peace. Best wishes to you and your family during this holiday season.';
+          }
+        } else if ($scope.wishCookie.q1 == 4) {
+          if($scope.wishCookie.lang == 'en') {
+            q1 = 'This time of year brings festivities and family fun. It is a time for reminiscing and looking forward. Wishing you wonderful memories during this joyous season.';
+          } else {
+            q1 = 'This time of year brings festivities and family fun. It is a time for reminiscing and looking forward. Wishing you wonderful memories during this joyous season.';
+          }
+        }
+      }
+
+      $scope.wish = {
+        fullName: $scope.wishCookie.fullName,
+        q1: q1,
+        q2: $scope.wishCookie.q2,
+        q3: $scope.wishCookie.q3,
+        language: $scope.wishCookie.language
+      };
+
+      //$scope.bombka = bombki.getBombka($scope.wish.q2 - 1);
+
 
     } else {
       $http.get('api/wishes/' + token).then(function successCallback(response) {
         $scope.wish = response.data.wish;
         console.log($scope.wish);
+
+        bombki.setBombka($scope.wish.q2);
+
       }, function errorCallback(response) {
         $scope.wish = response;
         console.log($scope.wish);
@@ -25,17 +82,21 @@ angular.module('zyczeniaApp')
       });
     }
 
-
+    console.log($scope.wish);
 
     $scope.hangThisOrnament = function() {
-      var data = {
-        hang: true
-      };
-      $http.put('../zyczeniaApi/wishes/' + token, data).then(function successCallback(response) {
-        console.log(response);
-      }, function errorCallback(response) {
-        console.log(response);
-      });
+      if(token == 'preview') {
+        $location.path('/');
+      } else {
+        var data = {
+          hang: true
+        };
+        $http.put('../zyczeniaApi/wishes/' + token, data).then(function successCallback(response) {
+          console.log(response);
+        }, function errorCallback(response) {
+          console.log(response);
+        });
+      }
     };
 
     var controller = new ScrollMagic.Controller({
@@ -260,7 +321,6 @@ angular.module('zyczeniaApp')
       .addTo(controller);
 
 
-
     var tween20 = TweenMax.to('#hang-this-ornament-footer', 0.5, { css: { "opacity" : "1"}});
 
     new ScrollMagic.Scene({triggerElement: "#hang-this-ornament", duration: '50%', offset: '500%', triggerHook: 'onLeave'})
@@ -275,5 +335,12 @@ angular.module('zyczeniaApp')
       .setTween(tween21)
 
       .addTo(controller);
+
+
+    $('#gift-bombka').attr("src","images/bombki/" + bombki.getBombka($scope.wish.q2 - 1));
+    $('#gift-bombka-token').attr("src","images/bombki/" + bombki.getBombka($scope.wish.q2 - 1));
+    $('#gift-bombka4').attr("src","images/bombki/" + bombki.getBombka($scope.wish.q2 - 1));
+    $('#gift-przykrywka').attr("src","images/prezent-przykrywka-0" + $scope.wish.q3 +".svg");
+    $('#gift-body').attr("src","images/prezent-body-0" + $scope.wish.q3 +".svg");
 
   });
