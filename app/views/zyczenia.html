@@ -176,7 +176,7 @@
 </div>
 
 
-<div id="overAllFooter">
+<!--<div id="overAllFooter">
   <svg version="1.1" class="arrow gold" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 19.3 19.3" style="enable-background:new 0 0 19.3 19.3;" xml:space="preserve">
     <path d="M18.6,7.9c-1-1-2.6-1-3.5,0l-2.9,2.9V2.5C12.2,1.1,11,0,9.7,0S7.2,1.1,7.2,2.5v8.3L4.3,7.9c-1-1-2.6-1-3.5,0
@@ -192,11 +192,11 @@
     <path d="M18.6,7.9c-1-1-2.6-1-3.5,0l-2.9,2.9V2.5C12.2,1.1,11,0,9.7,0S7.2,1.1,7.2,2.5v8.3L4.3,7.9c-1-1-2.6-1-3.5,0
       c-1,1-1,2.6,0,3.5l7.2,7.2C8.4,19,9,19.3,9.7,19.3s1.3-0.2,1.8-0.7l7.2-7.2C19.6,10.4,19.6,8.8,18.6,7.9z"/>
   </svg>
-</div>
+</div>-->
 <section id="home">
 
   <div class="stars">
-    <img src="images/gwiazka-01.svg" alt="+" class="star star-01" id="star-01-01">
+    <!--<img src="images/gwiazka-01.svg" alt="+" class="star star-01" id="star-01-01">-->
 
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-01">
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-02">
@@ -204,36 +204,28 @@
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-04">
     <img src="images/gwiazka-02.svg" alt="+" class="star star-02" id="star-02-05">
 
-    <img src="images/gwiazka-03.svg" alt="+" class="star star-03" id="star-03-01">
+    <!--<img src="images/gwiazka-03.svg" alt="+" class="star star-03" id="star-03-01">
 
     <img src="images/gwiazka-04.svg" alt="+" class="star star-04" id="star-04-01">
 
-    <img src="images/gwiazka-05.svg" alt="+" class="star star-05" id="star-05-01">
+    <img src="images/gwiazka-05.svg" alt="+" class="star star-05" id="star-05-01">-->
   </div>
 
 
   <div class="container container-centered text-center">
     <div class="centered">
-      <h3>We have a little something for You.</h3>
+      <h3 ng-if="wish.language == 'en'">We have a little something for You.</h3>
+      <h3 ng-if="wish.language == 'pl'">Mamy dla Ciebie małą niespodziankę</h3>
     </div>
   </div>
   <footer class="text-center wish-text-bottom">
-    <p>SCROLL DOWN</p>
+    <p ng-if="wish.language == 'en'">SCROLL DOWN</p>
+    <p ng-if="wish.language == 'pl'">PRZEWIJAJ W DÓŁ</p>
+
     <img src="images/mouseScroll.svg" alt="Scroll" id="mouse-scroll">
   </footer>
 </section>
-
-<section id="this-is-small-gift">
-  <div class="container">
-
-    <img src="images/kartka-bg-blue.svg" alt="" id="wieniec">
-
-    <footer class="text-center wish-text-bottom" id="this-small-gift-txt">
-      <h2>This small gift</h2>
-    </footer>
-
-  </div>
-
+<section id="bombka-static">
   <div id="git-and-hand">
     <div class="container">
       <img src="images/hand.svg" alt="" id="hand">
@@ -248,6 +240,35 @@
 
     </div>
   </div>
+</section>
+<section id="this-is-small-gift">
+  <div class="container">
+
+    <img src="images/kartka-bg-blue.svg" alt="" id="wieniec">
+
+    <img src="images/mobile-hand.svg" alt="" id="mobile-hand">
+
+    <footer class="text-center wish-text-bottom" id="this-small-gift-txt">
+      <h2 ng-if="wish.language == 'en'">This small gift</h2>
+      <h2 ng-if="wish.language == 'pl'">Tę świąteczną bombkę</h2>
+    </footer>
+
+  </div>
+
+  <!--<div id="git-and-hand">
+    <div class="container">
+      <img src="images/hand.svg" alt="" id="hand">
+
+      <div id="gift">
+
+        <img alt="" id="gift-bombka">
+        <img src="images/prezent-przykrywka-01.svg" alt="" id="gift-przykrywka">
+        <img src="images/prezent-body-01.svg" alt="" id="gift-body">
+
+      </div>
+
+    </div>
+  </div>-->
 
 </section>
 
@@ -265,7 +286,8 @@
   <div class="container">
 
     <footer class="text-center wish-text-bottom" id="footer-token">
-      <h2>Is a token of our friendship</h2>
+      <h2 ng-if="wish.language == 'en'">With best Christmas wishes</h2>
+      <h2 ng-if="wish.language == 'pl'">Przesyłam z najlepszymi życzeniami</h2>
     </footer>
   </div>
 </section>
@@ -297,18 +319,48 @@
     <path class="st2" d="M1055.3,314c-39.1,6.1-91.6-10.3-72.9-38.1c21.2-26.8,63.3,14.5,74.7,37.2s51.6,27.8,59.4,26.5"/>
     <path class="st2" d="M1059.7,314c39.1,6.1,91.6-10.3,72.9-38.1c-21.2-26.8-63.3,14.5-74.7,37.2c-11.4,22.8-51.6,27.8-59.4,26.5"/>
   </svg>
+
   <img alt="" id="gift-bombka4">
+
   <div class="container text-center">
 
 
     <footer id="hang-this-ornament-footer">
-      <h2>Would you like to hang this ornament?</h2>
-      <h5>it will be displayed at Wyborowa Pernod Ricard HQ</h5>
+      <div ng-show="token == 'preview' && sendStatus == false">
+        <h2 ng-if="wish.language == 'en'">You will be sending {{cards}} {{cardsWord.en}}</h2>
+        <h2 ng-if="wish.language == 'pl'">Wysyłamy {{cards}} {{cardsWord.pl}}</h2>
 
-      <button id="hang-this-ornament-button" class="btn" ng-click="hangThisOrnament()">
-        SURE! Let’s do it!
-      </button>
+        <btton ng-click="sendCardsZyczenia()" id="send-button" class="btn">
+          <span ng-if="wish.language == 'en'">SEND CARDS</span>
+          <span ng-if="wish.language == 'pl'">WYŚLIJ KARTKI</span>
+        </btton>
+      </div>
+
+      <div ng-show="token == 'preview' && sendStatus == 'success'">
+        <h2 ng-if="wish.language == 'en'">Your cards were sent successfuly!</h2>
+        <h2 ng-if="wish.language == 'pl'">Kartki zostały wysłane pomyślnie!</h2>
+      </div>
+
+      <div ng-show="token == 'preview' && sendStatus == 'error'">
+        <h2 ng-if="wish.language == 'en'">Something went wrong, check form for errors</h2>
+        <h2 ng-if="wish.language == 'pl'">Coś poszło nie tak, sprawdź błędy</h2>
+      </div>
+
+      <div ng-hide="token == 'preview'">
+        <h2 ng-if="wish.language == 'en'">Would you like to hang this ornament?</h2>
+        <h2 ng-if="wish.language == 'pl'">Czy chciałbyś zawiesić tę bombkę?</h2>
+        <h5 ng-if="wish.language == 'en'">it will be displayed at Wyborowa Pernod Ricard HQ</h5>
+        <h5 ng-if="wish.language == 'pl'">Będzie widoczna w siedzibie Wyborowa Pernod Ricard</h5>
+
+        <a ng-href="#/hang/{{token}}" id="hang-this-ornament-button" class="btn">
+          <span ng-if="wish.language == 'en'">SURE! Let’s do it!</span>
+          <span ng-if="wish.language == 'pl'">Jasne! Zróbmy to!</span>
+        </a>
+      </div>
+
     </footer>
+
+
 
   </div>
 </section>

@@ -38,6 +38,10 @@ section {
 
         h5 {
           margin: 20px 0;
+
+          a {
+            color: $blue;
+          }
         }
 
         .btn {
@@ -175,7 +179,7 @@ section {
 
               &:checked {
                 & + label {
-                  padding: 21px 35px;
+                  padding: 19px 15px;
 
                   .opis {
                     color: $blue;
@@ -522,6 +526,14 @@ section {
           margin-left: 10px;
         }
 
+        a {
+          color: #4B72AA;
+          &:hover {
+            color: #4B72AA;
+            text-decoration: none;
+          }
+        }
+
         &:first-child {
           text-align: left;
         }
@@ -536,8 +548,7 @@ section {
     @include position(relative);
     background-color: #002856;
     color: $w;
-    height: 100%;
-    margin-bottom: 300%;
+    height: 400%;
 
     .container {
       @include position(relative);
@@ -545,7 +556,7 @@ section {
       text-align: center;
 
       #wieniec {
-        height: 88%;
+        width: 88%;
         display: inline-block;
         margin: 12% * 0.5 auto;
         opacity: 0;
@@ -557,6 +568,7 @@ section {
       }
 
       footer {
+        @include position(fixed);
 
         &#this-small-gift-txt {
           h2 {
@@ -573,10 +585,23 @@ section {
       }
     }
 
+
+  }
+
+  &#bombka-static {
+    @include position(fixed, 0 0 0 0);
+    z-index: 1;
+
     #git-and-hand {
       @include position(absolute, 0 0 0 -100%);
       width: 100%;
       height: 100%;
+
+      &.hang {
+        .container {
+          @include position(absolute, 95px 0 none 0);
+        }
+      }
 
       .container {
         @include position(absolute, 0 0 0 0);
@@ -593,7 +618,8 @@ section {
         #gift {
           @include position(absolute, 0 0 0 0);
           width: 417px;
-          height: 486px;
+          height: 398px;
+          text-align: center;
 
           #gift-bombka {
             @include position(absolute, null 0 0 0);
@@ -648,10 +674,7 @@ section {
 
       footer {
         &#footer-token {
-          @include position(absolute);
-          right: 0px !important;
-          top: 85% !important;
-          left: 0px !important;
+          @include position(fixed, 85% 0 null 0);
 
           h2 {
             @include transition(all 500ms ease);
@@ -687,7 +710,7 @@ section {
       #gift-token {
         @include position(absolute, 0 0 0 0);
         width: 417px;
-        height: 486px;
+        height: 383px;
 
         #gift-bombka-token {
           @include position(absolute, null 0 0 0);
@@ -704,6 +727,7 @@ section {
     @include position(relative);
     height: 100%;
     background-color: $w;
+    z-index: 2;
 
     .container {
       height: 100%;
@@ -803,11 +827,13 @@ section {
       height: 100%;
 
       footer {
-        @include position(absolute, 65% 0 null 0);
+        @include position(absolute, 50% 0 null 0);
         margin: auto;
 
         &#hang-this-ornament-footer {
           opacity: 0;
+          position: relative;
+          z-index: 99999;
         }
 
         h2 {
@@ -841,13 +867,226 @@ section {
     }
   }
 
-  &#drag-and-drop {
+  &#gallery {
     height: 100%;
+    overflow: hidden;
+
+    .container {
+      height: 100%;
+      width: 100%;
+
+      header {
+        z-index: 3;
+        svg {
+          @include position(relative);
+          z-index: 1;
+        }
+
+        &:after {
+          @include position(absolute, 40px 0 0 0);
+          content: '';
+          width: 200px;
+          height: 120px;
+          z-index: 0;
+          display: block;
+          margin: auto;
+          background-color: #D1AC50;
+        }
+      }
+
+      .row {
+        height: 100%;
+
+        .col-xs-12 {
+          height: 100%;
+          white-space: nowrap;
+
+          .bombka_hang {
+            @include position(relative);
+            width: 20%;
+            height: 641px;
+            display: inline-block;
+            text-align: center;
+
+            .ribbon {
+              @include position(absolute, 0 0 null 0);
+              margin: auto;
+              width: 66px;
+              height: 350px;
+              z-index: 1;
+            }
+            .bombka {
+              @include position(absolute, null 0 0 0);
+              margin: 0 auto;
+              width: 211px;
+              height: 310px;
+              z-index: 0;
+            }
+
+            p {
+              @include position(absolute, null 0 0 0);
+              @include transform(translate(0, 120%));
+              margin: auto;
+              display: block;
+              font-size: em(20, $font-size);
+              line-height: 1.3em;
+              text-shadow: $text-shadow;
+              color: $w;
+            }
+
+            &:nth-child(even) {
+              top: -180px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.yellow {
     background-color: #D1AC50;
     color: $blue;
 
+
+    .go-back {
+      @include position(absolute, 0 null null 0);
+      color: $w;
+      font-size: em(20, $font-size);
+      font-weight: 700;
+      margin: 30px 0 0 30px;
+      z-index: 99;
+
+      a {
+        color: $w;
+
+        img {
+          width: 18px;
+          height: 17px;
+          margin-right: 15px;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+    }
+
+    header {
+      @include position(absolute, 0 0 null 0);
+
+      .logo {
+        margin-top: 40px;
+        fill: $w;
+      }
+    }
+
+
+
+
+  }
+
+  &#drag-and-drop {
+    height: 100%;
+    overflow: hidden;
+
     .container {
       width: 100%;
+      height: 100%;
+
+      .row {
+        height: 100%;
+
+        .col-xs-6 {
+          @include position(relative);
+          height: 100%;
+
+          &:first-child {
+            z-index: 1;
+          }
+
+          .arrow-right {
+            @include position(absolute, 0 null 0 0);
+            @include transform(translate(-50%, 50px));
+            @include transition(all 500ms ease);
+            width: 76px;
+            height: 41px;
+            margin: auto;
+
+            &.ng-hide-add {
+              @include animation-name(fadeOut);
+              @include animation-duration(500ms);
+              @include animation-timing-function(ease);
+              @include animation-fill-mode(both);
+              @include backface-visibility(hidden);
+            }
+          }
+
+          .message {
+            @include transition(all 500ms ease);
+
+            &.ng-hide-remove {
+              @include animation-name(zoomIn);
+              @include animation-duration(500ms);
+              @include animation-delay(500ms);
+              @include animation-timing-function(ease);
+              @include animation-fill-mode(both);
+              @include backface-visibility(hidden);
+            }
+
+
+            h2 {
+              font-weight: 400;
+            }
+
+            h3 {
+              color: $w;
+              font-weight: 400;
+            }
+          }
+
+          .bombka {
+            @include transform(translate(0px, 0px));
+            @include position(absolute, 0 0 0 0);
+            width: 281px;
+            height: 392px;
+            margin: auto;
+
+            &.dropped {
+              @include transition(all 200ms ease);
+            }
+
+            &.dropzone {
+              &.dropped {
+                opacity: 0;
+              }
+              svg {
+                @include transition(all 200ms ease);
+                path {fill:none;stroke:#FFFFFF;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6.2835,18.8504;}
+              }
+
+              &.drop-target {
+                svg {
+                  @include transform(scale(1.2));
+                  //path {fill:red;}
+                }
+              }
+            }
+          }
+        }
+      }
+
+      footer {
+        @include transition(all 500ms ease);
+
+        &.ng-hide-add {
+          @include animation-name(fadeOut);
+          @include animation-duration(500ms);
+          @include animation-timing-function(ease);
+          @include animation-fill-mode(both);
+          @include backface-visibility(hidden);
+        }
+      }
     }
   }
 }
@@ -1063,6 +1302,12 @@ section {
 
 }
 
+
 /* RESPONSIVE */
 
 @import '_responsive.scss';
+
+
+#ribon {
+  display: none!important;
+}

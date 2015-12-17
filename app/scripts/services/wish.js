@@ -16,7 +16,7 @@ angular.module('zyczeniaApp')
       getWish: function (token) {
         var defer = $q.defer();
 
-        $http.get('../zyczeniaApi/wishes/' + token).then(function successCallback(response) {
+        $http.get('api/wishes/' + token).then(function successCallback(response) {
           defer.resolve(response.wish);
         }, function errorCallback(response) {
           defer.reject(response.msg);

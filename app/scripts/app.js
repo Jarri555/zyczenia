@@ -16,9 +16,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'duScroll'
+    'duScroll',
+    'angulartics',
+    'angulartics.google.analytics'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $analyticsProvider) {
     $routeProvider
       .when('/en', {
         templateUrl: 'views/english.html'
@@ -34,10 +36,15 @@ angular
         templateUrl: 'views/hang.html',
         controller: 'HangCtrl'
       })
-      .otherwise({
-        redirectTo: '/en'
+      .when('/galeria', {
+        templateUrl: 'views/gallery.html',
+        controller: 'GalleryCtrl'
       })
-    ;
+      .otherwise({
+        redirectTo: '/pl'
+      });
+    $analyticsProvider.firstPageview(true); /* Records pages that don't use $state or $route */
+    $analyticsProvider.withAutoBase(true);  /* Records full path */
   })
   .run(function ($rootScope, $timeout, $window) {
     $rootScope.$on('$routeChangeSuccess', function () {

@@ -604,15 +604,15 @@ textarea {
   }
 
   &#trigger4 {
-    top: 300%;
+    top: 180%;
   }
 
   &#trigger5 {
-    top: 450%;
+    top: 400%;
   }
 
   &#trigger6 {
-    top: 500%;
+    top: 450%;
   }
 
   &#trigger7 {
@@ -626,7 +626,7 @@ textarea {
 
 footer {
   &.wish-text-bottom {
-    @include position(absolute, null 0 10% 0);
+    @include position(fixed, null 0 10% 0);
 
     h2 {
       font-weight: 300;

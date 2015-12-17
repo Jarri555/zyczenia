@@ -8,7 +8,7 @@
  * Controller of the zyczeniaApp
  */
 angular.module('zyczeniaApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $document, $http, $timeout, $location, $window, bombki, wish) {
+  .controller('MainCtrl', function ($rootScope, $scope, $document, $http, $timeout, $location, $window, $analytics, bombki, wish) {
     $scope.bombki = bombki.getBombki();
 
     $scope.resetForm = function () {
@@ -35,8 +35,11 @@ angular.module('zyczeniaApp')
       ];
 
       $scope.fullName = '';
-
-      $scope.cards = 'card';
+      if($location.path() == '/en') {
+        $scope.cards = 'card';
+      } else {
+        $scope.cards = 'kartkę';
+      }
     };
 
     $scope.errors = {
@@ -69,8 +72,6 @@ angular.module('zyczeniaApp')
       duration: 1000
     };
 
-
-
     $scope.resetForm();
 
     $scope.sender = {
@@ -80,7 +81,7 @@ angular.module('zyczeniaApp')
     /* questions */
 
     var isEmpty = function (val) {
-      console.log('a');
+
       if (typeof val !== 'undefined') {
         if (val == '') {
           return true;
@@ -102,9 +103,10 @@ angular.module('zyczeniaApp')
     });
 
     $scope.$watch('questions.q1.custom.text', function (newVal, oldVal) {
-      if (newVal === oldVal) {
+      /*if (newVal === oldVal) {
         return;
-      }
+      }*/
+      $scope.questions.q1.radio = '';
       $scope.errors.wishes = false;
       $scope.questions.q1.custom.active = true;
 
@@ -156,12 +158,21 @@ angular.module('zyczeniaApp')
       if (newVal === oldVal) {
         return;
       }
-      if (newVal > 1) {
-        $scope.cards = 'cards';
+      if($location.path() == '/en') {
+        if (newVal > 1) {
+          $scope.cards = 'cards';
+        } else {
+          $scope.cards = 'card';
+        }
       } else {
-        $scope.cards = 'card';
+        if (newVal == 1) {
+          $scope.cards = 'kartkę';
+        } else if (newVal < 5) {
+          $scope.cards = 'kartki';
+        } else {
+          $scope.cards = 'kartek';
+        }
       }
-
     });
 
     $scope.validation = function (val) {
@@ -218,7 +229,6 @@ angular.module('zyczeniaApp')
                 $scope.recipients[i].emailError = true;
               }
             }
-
             $document.scrollToElement($scope.elements.defineRecipients, $scope.scrollCfg.offset.page, $scope.scrollCfg.duration);
           }
         } else {
@@ -267,11 +277,9 @@ angular.module('zyczeniaApp')
           $document.scrollToElement($scope.elements.chooseWishes, $scope.scrollCfg.offset.page, $scope.scrollCfg.duration);
         }
       }
-
       if($scope.errors.recipients || $scope.errors.paper || $scope.errors.ornament || $scope.errors.fullName || $scope.errors.wishes) {
         return false;
       }
-
       return true;
     };
 
@@ -291,11 +299,9 @@ angular.module('zyczeniaApp')
           recipients: $scope.recipients,
           language: lang
         });
-
         $window.open('#/zyczenia/preview/');
         //$location.path('/zyczenia/asdas/dasda/dasda/dasd/dsadas/dasda');
       }
-
       e.preventDefault();
     };
 
@@ -313,31 +319,23 @@ angular.module('zyczeniaApp')
           q2: $scope.questions.q2.radio,
           q3: $scope.questions.q3.radio,
           recipients: $scope.recipients,
-          language: $location.path()
+          language: $location.path() == '/en' ? 'en' : 'pl'
         };
 
-        console.log(data);
-
         $http.post('api/wishes', data).then(function successCallback(response) {
-          console.log(response.wish);
           $scope.sendStatus = 'success';
-
+          $analytics.eventTrack(data.recipients.length, {  category: 'Wysłano kartki', label: 'Ilość wysłanych kartek' });
         }, function errorCallback(response) {
           console.log(response.data.msg);
           $scope.sendStatus = 'error';
         });
       }
-
       e.preventDefault();
     };
-
-
 
     $scope.sendMoreCards = function (e) {
       $scope.resetForm();
       $document.scrollToElement($scope.elements.chooseWishes, $scope.scrollCfg.offset.page, $scope.scrollCfg.duration);
       e.preventDefault();
     };
-
-
   });

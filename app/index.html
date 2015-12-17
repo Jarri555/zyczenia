@@ -2,11 +2,14 @@
 <html ng-app="zyczeniaApp">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Życzenia od Pernod Ricard</title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,700&subset=latin,latin-ext' rel='stylesheet'
         type='text/css'>
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+  <link type="image/x-icon" href="favicon.png" />
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
@@ -38,8 +41,7 @@
       r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
   }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-XXXXX-X');
-  ga('send', 'pageview');
+  ga('create', 'UA-71421047-1');
 </script>
 
 <!-- build:js(.) scripts/vendor.js -->
@@ -57,6 +59,24 @@
 <script src="bower_components/smoothscroll/SmoothScroll.js"></script>
 <script src="bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js"></script>
 <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+<script src="bower_components/interact/interact.js"></script>
+<script src="bower_components/waypoints/lib/noframework.waypoints.min.js"></script>
+<script src="bower_components/SHA-1/sha1.js"></script>
+<script src="bower_components/angulartics/src/angulartics.js"></script>
+<script src="bower_components/angulartics/src/angulartics-clicky.js"></script>
+<script src="bower_components/angulartics/src/angulartics-cnzz.js"></script>
+<script src="bower_components/angulartics/src/angulartics-ga-cordova.js"></script>
+<script src="bower_components/angulartics/src/angulartics-gtm.js"></script>
+<script src="bower_components/angulartics/src/angulartics-piwik.js"></script>
+<script src="bower_components/angulartics/src/angulartics-scroll.js"></script>
+<script src="bower_components/angulartics/src/angulartics-splunk.js"></script>
+<script src="bower_components/angulartics/src/angulartics-woopra.js"></script>
+<script src="bower_components/angulartics/src/angulartics-marketo.js"></script>
+<script src="bower_components/angulartics/src/angulartics-intercom.js"></script>
+<script src="bower_components/angulartics/src/angulartics-inspectlet.js"></script>
+<script src="bower_components/angulartics/src/angulartics-newrelic-insights.js"></script>
+<script src="bower_components/angulartics-google-analytics/lib/angulartics-google-analytics.js"></script>
+<script src="bower_components/mobile-detect/mobile-detect.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 <script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
@@ -73,6 +93,8 @@
 <script src="scripts/services/wish.js"></script>
 <script src="scripts/controllers/hang.js"></script>
 <script src="scripts/services/bombki.js"></script>
+<script src="scripts/controllers/gallery.js"></script>
+<script src="scripts/services/gallery.js"></script>
 <!-- endbuild -->
 </body>
 </html>

@@ -24,11 +24,11 @@
     <div class="centered">
       <h1>Send<br>
         Christmas card<br>
-        to Your clients</h1>
-      <h5>Just follow few easy steps</h5>
+        to Your business partners</h1>
       <a href="#" class="btn" ng-click="letsSendSomeCards($event)">let’s send some cards!</a>
-      <p><a href="#/pl">Jeżeli chcesz wysłać życzenia po Polsku,<br>
-        kliknij tutaj.</a></p>
+      <h5><a href="#/pl">Jeżeli chcesz wysłać życzenia po polsku,<br>
+        kliknij tutaj.</a></h5>
+
     </div>
   </div>
 </section>
@@ -41,34 +41,31 @@
     </header>
     <div class="validation" ng-class="errors.wishes ? 'has-error' : ''">
       <div class="error">
-        Your name is inYou have to select one of the ornaments
+        Select your wishes
       </div>
     </div>
     <div class="row text-center">
       <div class="col-md-6">
         <input type="radio" id="c11" name="q1" ng-model="questions.q1.radio" value="1"/>
-        <label for="c11">May this holiday season sparkle and shine, may all of your wishes and dreams come true, and may
-          you feel this happiness all year round.
+        <label for="c11">May the Christmas season be full of warmth, love and joy. Let the New Year bring great prosperity and may all your dreams come true.
         </label>
       </div>
       <div class="col-md-6">
         <input type="radio" id="c12" name="q1" ng-model="questions.q1.radio" value="2"/>
-        <label for="c12">During this time of faith and family, may the true meaning of Christmas fill you with joy.
-          Wishing you a Merry Christmas and a blessed New Year.
+        <label for="c12">Let the Christmas season bring much warmth and happiness, and may the New Year be fresh and bright.
         </label>
       </div>
 
       <div class="col-md-6">
         <input type="radio" id="c13" name="q1" ng-model="questions.q1.radio" value="3"/>
-        <label for="c13">May the message of Christmas fill your life with joy and peace. Best wishes to you and your
-          family during this holiday season.
+        <label for="c13">May the Christmas season be filled with peace and joy. Let the New Year bring an abundance of good fortune and delightful surprises.
+        </label>
         </label>
       </div>
 
       <div class="col-md-6">
         <input type="radio" id="c14" name="q1" ng-model="questions.q1.radio" value="4"/>
-        <label for="c14">This time of year brings festivities and family fun. It is a time for reminiscing and looking
-          forward. Wishing you wonderful memories during this joyous season.
+        <label for="c14">Let the Christmas season be a special time of love and joy, and may the New Year be full of warm memories and great success.
         </label>
       </div>
     </div>
@@ -76,9 +73,7 @@
       <div class="col-md-6 col-md-offset-3 custom-container">
         <textarea name="customWishes" id="customWishes" placeholder="Write your custom wishes" cols="30"
                   rows="5" ng-model="questions.q1.custom.text"
-                  ng-class="questions.q1.custom.active == true ? 'active' : ''"
-                  ng-click="questions.q1.custom.active = true; questions.q1.radio = ''"
-                  ng-touch="questions.q1.custom.active = true; questions.q1.radio = ''"></textarea>
+                  ng-class="questions.q1.custom.active == true ? 'active' : ''"></textarea>
 
         <div class="info">
           <h5>{{160 - questions.q1.custom.characters}}</h5>
@@ -90,7 +85,7 @@
       <h5>Sign the card you’re sending</h5>
 
       <div class="form-group" ng-class="errors.fullName ? 'has-error' : ''">
-        <label class="control-label" for="full-name">Your name is incorrect</label>
+        <label class="control-label" for="full-name">Sign the card</label>
         <input type="text" placeholder="Full name" id="full-name" ng-model="sender.fullName">
       </div>
     </footer>
@@ -104,7 +99,7 @@
     </header>
     <div class="validation" ng-class="errors.ornament ? 'has-error' : ''">
       <div class="error">
-        Your name is inYou have to select one of the ornaments
+        Select the ornament
       </div>
     </div>
     <div class="row">
@@ -129,7 +124,7 @@
     </header>
     <div class="validation" ng-class="errors.paper ? 'has-error' : ''">
       <div class="error">
-        Your name is inYou have to select one of the ornaments
+        Select wrapping paper
       </div>
     </div>
     <div class="row">
@@ -164,7 +159,7 @@
     </header>
     <div class="validation" ng-class="errors.recipients ? 'has-error' : ''">
       <div class="error">
-        Your name is inYou have to select one of the ornaments
+        Enter the recipient name and e-mail
       </div>
     </div>
     <div class="row">
@@ -204,7 +199,7 @@
     </div>
     <div ng-show="sendStatus == 'success'" class="success">
       <h3>Your cards were sent successfuly!</h3>
-      <button class="btn" ng-click="sendMoreCards($event)">send more cards</button>
+      <button class="btn" ng-click="sendMoreCards($event)">start from beginning</button>
     </div>
     <div ng-show="sendStatus == 'error'" class="error">
       <h3>Something went wrong, check form for errors</h3>
@@ -215,10 +210,10 @@
   <footer class="text-center">
 
     <div class="col-md-6">
-      Wyborowa Pernod Ricard 2015
+
     </div>
     <div class="col-md-6">
-      Made by Plej <img src="images/plej.svg" alt="Plej">
+      <a href="http://www.plej.pl/">Made by Plej <img src="images/plej.svg" alt="Plej"></a>
     </div>
   </footer>
 </section>
